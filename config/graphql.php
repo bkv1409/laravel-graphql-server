@@ -124,7 +124,8 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-
+                App\GraphQL\Query\AllPeopleQuery::class,
+                App\GraphQL\Query\PersonQuery::class,
             ],
             'mutation' => [
 
