@@ -128,6 +128,9 @@ return [
             ],
             'mutation' => [
 
+            ],
+            'types' => [
+                'Person' => App\GraphQL\Type\PersonType::class,
             ]
         ]
     ],
