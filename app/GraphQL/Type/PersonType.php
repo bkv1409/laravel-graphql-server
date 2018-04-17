@@ -20,11 +20,11 @@ class PersonType extends GraphQLType
                 'type' => Type::nonNull(Type::int()),
                 'description' => 'The id of the user'
             ],
-            'firstName' => [
+            'first_name' => [
                 'type' => Type::nonNull(Type::string()),
                 'description' => 'The firstName of the user'
             ],
-            'lastName' => [
+            'last_name' => [
                 'type' => Type::nonNull(Type::string()),
                 'description' => 'The lastName of the user'
             ],
@@ -41,42 +41,5 @@ class PersonType extends GraphQLType
                 'description' => 'Person\'s friends'
             ]
         ];
-    }
-
-    public function resolveFriendsField($root, $args)
-    {
-        $fixtures = [
-            1 => [
-                'id' => 1,
-                'firstName' => 'Kyle',
-                'lastName' => 'Reyes',
-                'username' => 'kreyes',
-                'email' => 'kyle.reyes@example.com',
-                'friends' => [2, 3]
-            ],
-            2 => [
-                'id' => 2,
-                'firstName' => 'Emma',
-                'lastName' => 'Thomsen',
-                'username' => 'ethomsen',
-                'email' => 'emma.thomsen@example.com',
-                'friends' => [1, 3],
-            ],
-            3 => [
-                'id' => 3,
-                'firstName' => 'Crispim',
-                'lastName' => 'Ramos',
-                'username' => 'cramos',
-                'email' => 'crispim.ramos@example.com',
-                'friends' => [1, 2],
-            ],
-        ];
-
-        $friendArray = [];
-        foreach ($root['friends'] as $friendId) {
-            $friendArray[$friendId] = $fixtures[$friendId];
-        }
-
-        return $friendArray;
     }
 }
