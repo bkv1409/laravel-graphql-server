@@ -20,6 +20,8 @@ class PersonQuery extends Query
 
     public function args()
     {
+        // this allows us to query a particular id
+        // it is passed to resolve() below
         return [
             'id' => ['name' => 'id', 'type' => Type::nonNull(Type::int())],
         ];
