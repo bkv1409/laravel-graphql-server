@@ -1,6 +1,6 @@
 # laravel-graphql-server
 
-This is a Laravel 5.6 example repo for adding a GraphQL endpoint to your existing Laravel app, developed for https://www.modernjsforphpdevs.com/
+This is a Laravel example repo for adding a GraphQL endpoint to your existing Laravel app, developed for https://www.modernjsforphpdevs.com/
 
 ## Requirements
 
@@ -17,24 +17,6 @@ Clone with submodules
 $ git clone --recursive git@github.com:zorfling/laravel-graphql-server.git
 ```
 
-Install the composer dependencies:
-
-```bash
-$ composer install
-```
-
-Then install the node dependencies:
-
-```bash
-$ yarn
-
-# OR
-
-$ npm install
-```
-
-## Usage
-
 Use docker to spin up nginx, mysql and the workspace image.
 
 ```bash
@@ -43,15 +25,34 @@ $ cp env-example .env
 $ docker-compose up -d nginx mysql workspace
 ```
 
-Enter the workspace image to run commands
+Enter the `workspace` image to run commands
 
 ```bash
 $ docker-compose exec workspace bash
 ```
 
+Install the composer dependencies:
+
+```bash
+root@a99b46dd3004:/var/www# composer install
+```
+
+Then install the node dependencies:
+
+```bash
+root@a99b46dd3004:/var/www# yarn
+
+# OR
+
+root@a99b46dd3004:/var/www# npm install
+```
+
+## Usage
+
 Initialise Laravel
 
 ```bash
+# in the workspace image
 root@a99b46dd3004:/var/www# cp .env.sample .env
 root@a99b46dd3004:/var/www# ./artisan key:generate
 ```
@@ -59,6 +60,7 @@ root@a99b46dd3004:/var/www# ./artisan key:generate
 Run migrations and seed data
 
 ```bash
+# in the workspace image
 root@a99b46dd3004:/var/www# ./artisan migrate
 root@a99b46dd3004:/var/www# ./artisan db:seed
 ```
