@@ -38,14 +38,22 @@ $ npm install
 Use docker to spin up nginx, mysql and the workspace image.
 
 ```bash
-$  cd laradock
-$  docker-compose up -d nginx mysql workspace
+$ cd laradock
+$ cp env-example .env
+$ docker-compose up -d nginx mysql workspace
 ```
 
 Enter the workspace image to run commands
 
 ```bash
 $ docker-compose exec workspace bash
+```
+
+Initialise Laravel
+
+```bash
+root@a99b46dd3004:/var/www# cp .env.sample .env
+root@a99b46dd3004:/var/www# ./artisan key:generate
 ```
 
 Run migrations and seed data
